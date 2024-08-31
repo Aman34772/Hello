@@ -7,11 +7,13 @@ const UserRouter = require("./routes/UserRouter");
 const app = express();
 
 // Connect to the database
-dbConnect('mongodb://127.0.0.1:27017/dekhonaa').then(()=>console.log("mongodb connected"))
+dbConnect(
+  "mongodb+srv://amankumar:amankumar@cluster0.auljv.mongodb.net/test"
+).then(() => console.log("mongodb connected"));
 
 // Middleware to parse JSON requests
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({ extended: false }));
 app.use("/api/users", UserRouter);
 
 const PORT = process.env.PORT || 5000;
