@@ -1,3 +1,5 @@
+const { body, validationResult } = require("express-validator");
+
 const { User } = require("../models/User");
 // src/controllers/userController.js
 // const data = require("./dummy.json");
@@ -10,22 +12,20 @@ const handleCreateUsers = async (req, res) => {
   const body = req.body;
   if (
     !body ||
-    !body.id ||
     !body.first_name ||
     !body.last_name ||
-    !body.email ||
-    !body.gender
-  ) {
-    return res.json({ msg: "All fields are required!" });
-  }
+    !body.gender ||
+    !body.email
+  )
+    return res.status(200).json({ status: "All fields are required" });
   await User.create({
     id: body.id,
-    firstName: body.first_name,
-    lastName: body.last_name,
+    first_name: body.first_name,
+    last_name: body.last_name,
     email: body.email,
     gender: body.gender,
   });
-  return res.json({ status: "created" });
+  return res.status(201).json({ status: "created" });
 };
 
 const handleGetUserById = async (req, res) => {
