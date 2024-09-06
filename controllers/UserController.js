@@ -19,7 +19,7 @@ const handleCreateUsers = async (req, res) => {
   )
     return res.status(200).json({ status: "All fields are required" });
   await User.create({
-    id: body.id,
+    id: body.id ,
     first_name: body.first_name,
     last_name: body.last_name,
     email: body.email,

@@ -9,6 +9,7 @@ const { dbConnect } = require("./connection");
 
 const cors = require("cors");
 const UserRouter = require("./routes/UserRouter");
+const BookRouter = require("./routes/BookRouter");
 // const data = require("./models/MOCK_DATA.json")
 const app = express();
 
@@ -31,6 +32,7 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use("/api/users", UserRouter);
+app.use("/api/books", BookRouter)
 
 
 
